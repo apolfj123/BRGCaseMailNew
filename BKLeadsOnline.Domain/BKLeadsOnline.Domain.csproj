@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BKLeadsOnline.Domain</RootNamespace>
+    <AssemblyName>BKLeadsOnline.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Words, Version=13.3.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BRGCaseMail\binaries\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BRGCaseMail\binaries\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\BRGCaseMail\binaries\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BRGCaseMail\binaries\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BRGCaseMail\binaries\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BRGCaseMail\binaries\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BRGCaseMail\binaries\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting">
+      <HintPath>..\..\..\..\..\BKLeadsDBBackup\Telerik.Reporting.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ASPOSEUtils.cs" />
+    <Compile Include="Avery8160Labels.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Avery8160Labels.designer.cs">
+      <DependentUpon>Avery8160Labels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankruptcyCase.cs" />
+    <Compile Include="BankruptcyCaseService.cs" />
+    <Compile Include="CellCarrier.cs" />
+    <Compile Include="CellCarrierService.cs" />
+    <Compile Include="GoogleGeoCoder.cs" />
+    <Compile Include="Crypto.cs" />
+    <Compile Include="Dealer.cs" />
+    <Compile Include="DealerDocTemplate.cs" />
+    <Compile Include="DealerMailingListCase.cs" />
+    <Compile Include="DealerMailingListCaseService.cs" />
+    <Compile Include="DealerSalesReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DealerSalesReport.Designer.cs">
+      <DependentUpon>DealerSalesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DealerService.cs" />
+    <Compile Include="DealerZipCode.cs" />
+    <Compile Include="IEmailHelper.cs" />
+    <Compile Include="LetterService.cs" />
+    <Compile Include="Lookup.cs" />
+    <Compile Include="LookupService.cs" />
+    <Compile Include="MapQuestGeoCoder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DocTemplate.cs" />
+    <Compile Include="DocTemplateService.cs" />
+    <Compile Include="DealerMailingList.cs" />
+    <Compile Include="DealerMailingListService.cs" />
+    <Compile Include="State.cs" />
+    <Compile Include="StateService.cs" />
+    <Compile Include="TOS.cs" />
+    <Compile Include="UserProfile.cs" />
+    <Compile Include="UserProfileService.cs" />
+    <Compile Include="ZipCodePart.cs" />
+    <Compile Include="ZipCodePartService.cs" />
+    <Compile Include="ZipGeoCode.cs" />
+    <Compile Include="ZipGeoCodeService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Avery8160Labels.resx">
+      <DependentUpon>Avery8160Labels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DealerSalesReport.resx">
+      <DependentUpon>DealerSalesReport.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,334 @@
+﻿<Window xmlns:my="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.RibbonBar"  x:Class="BRGCaseMail.MainWindow"
+				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+				WindowState="Maximized" ResizeMode="CanResizeWithGrip" Title="BRG Case Mail Management" >
+        <Window.Resources>
+            <ResourceDictionary Source="BRGCaseMailStyleDictionary.xaml" />
+        </Window.Resources>
+        <Grid>
+            <Grid.Background>
+            <SolidColorBrush Color="#FCFDFF"></SolidColorBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <telerik:RadMenu VerticalAlignment="Top" Grid.Row="0" telerik:StyleManager.Theme="Office_Silver" >
+            <telerik:RadMenuItem Header="File" >
+                <telerik:RadMenuItem Header="Exit" x:Name="mnuExit" Click="mnuExit_Click" />
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Header="Window" >
+                <telerik:RadMenuItem Header="Close Dealer and Case Tabs" x:Name="mnuCloseTabs" Click="mnuCloseTabs_Click" />
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Header="Help" />
+        </telerik:RadMenu>
+        <telerik:RadTabControl telerik:StyleManager.Theme="Office_Silver" x:Name="tabCtrlMain"  Grid.Row="1"  >
+            <telerik:RadTabItem Header="Dealer Management" x:Name="rtDealerMgmt" Margin="0,0,5,0" >
+                <Grid>
+                    <Grid.Background>
+                        <SolidColorBrush Color="#FCFDFF"></SolidColorBrush>
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="0"  Header="Dealer Management" Style="{StaticResource MyGroupBoxStyle}" Margin="10"  >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <GroupBox Grid.Row="0"  Header="Search Dealers " Margin="10" Style="{StaticResource MyGroupBoxStyle}">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <Label HorizontalAlignment="Right">Dealer Name:</Label>
+                                        <TextBox x:Name="txtDealerName" Margin="5" Width="300" HorizontalAlignment="Left" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <RadioButton VerticalAlignment="Center" Margin="5" IsChecked="True" x:Name="rdoActiveOnly" >Show Active Only</RadioButton>
+                                        <RadioButton VerticalAlignment="Center" Margin="5" >Show All</RadioButton>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="left">
+                                        <telerik:RadButton x:Name="btnSearchDealers" Margin="3" Width="150" telerik:StyleManager.Theme="Summer" Click="btnSearchDealers_Click">Search...</telerik:RadButton>
+                                        <telerik:RadButton x:Name="btnAddNewDealer" Margin="3" Width="150" telerik:StyleManager.Theme="Summer" Click="btnAddNewDealer_Click">Add New Dealer...</telerik:RadButton>
+                                        <telerik:RadButton x:Name="btnGeoCodeAllDealers" Margin="3" Width="150" telerik:StyleManager.Theme="Summer" Click="btnGeoCodeDealers_Click" Visibility="Hidden" >GeoCode Dealers...</telerik:RadButton>
+                                    </StackPanel>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Grid.Row="1"  Header="Search Results (Double-Click to Edit)" Margin="5" Style="{StaticResource MyGroupBoxStyle}">
+                                <telerik:RadGridView AutoGenerateColumns="False" Margin="10" x:Name="GridViewDealers" Width="Auto" ShowGroupPanel="False" telerik:StyleManager.Theme="Summer" KeyDown="GridViewDealers_KeyDown" ScrollViewer.VerticalScrollBarVisibility="Auto" MouseDoubleClick="GridViewDealers_MouseDoubleClick">
+                                    <telerik:RadGridView.Columns>
+                                        <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="CompanyName" Header="Dealership Name" DataMemberBinding="{Binding CompanyName}" ></telerik:GridViewDataColumn>
+                                        <telerik:GridViewColumn>
+                                            <telerik:GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <telerik:RadButton Content="Open"
+                                                       Click="btnOpenDealer_Click" />
+                                                </DataTemplate>
+                                            </telerik:GridViewColumn.CellTemplate>
+                                        </telerik:GridViewColumn>
+                                        <telerik:GridViewColumn>
+                                            <telerik:GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadButton Content="Print Mailing"
+                                                       Click="btnPrint_Click" />
+                                            </DataTemplate>
+                                            </telerik:GridViewColumn.CellTemplate>
+                                        </telerik:GridViewColumn>
+                                        <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="City" Header="City" DataMemberBinding="{Binding City}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="State" Header="State" DataMemberBinding="{Binding StateCode}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="PostalCode" Header="Postal Code" DataMemberBinding="{Binding PostalCode}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="PhoneNumber" Header="Phone Number" DataMemberBinding="{Binding PhoneNumber}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="Email" Header="Email" DataMemberBinding="{Binding email}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="Active" Header="Active Customer" DataMemberBinding="{Binding CurrentCustomer}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="Latitude" Header="Latitude" DataMemberBinding="{Binding Latitude}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="Longitude" Header="Longitude" DataMemberBinding="{Binding Longitude}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewColumn>
+                                            <telerik:GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                    <telerik:RadButton Click="btnDelete_Click" >
+                                                        <Image Source="./images/Remove.png"></Image>
+                                                    </telerik:RadButton>
+                                                </DataTemplate>
+                                            </telerik:GridViewColumn.CellTemplate>
+                                        </telerik:GridViewColumn>
+                                    </telerik:RadGridView.Columns>
+                                </telerik:RadGridView>
+                            </GroupBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="Pacer Data Management" x:Name="rtPacerDataMgmt" Margin="5,0,5,0" >
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="Case Management" x:Name="rtCaseMgmt" Margin="0,0,5,0"   >
+                <telerik:RadTabControl  telerik:StyleManager.Theme="Office_Silver" x:Name="tabCtrlSearch"  HorizontalContentAlignment="Stretch"  HorizontalAlignment="Stretch">
+                    <telerik:RadTabItem Header="Search Cases" x:Name="rtCaseMgmtSearch" Margin="0,0,5,0"   >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <GroupBox Grid.Row="0"  Header="Search Cases " Margin="10" Style="{StaticResource MyGroupBoxStyle}">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                    <Grid Name="grdCaseDetails">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" Content="Court:" HorizontalAlignment="Right" />
+                                        <Label Grid.Row="1" Grid.Column="0" Content="Case Number:" HorizontalAlignment="Right" />
+                                        <Label Grid.Row="2" Grid.Column="0" Content="Pacer Import Transaction ID:" HorizontalAlignment="Right" />
+                                        <Label Grid.Row="3" Grid.Column="0" Content="Debtor First Name:" HorizontalAlignment="Right" />
+                                        <Label Grid.Row="4" Grid.Column="0" Content="Debtor Last Name:" HorizontalAlignment="Right" />
+                                        <Label Grid.Row="5" Grid.Column="0" Content="Zip/Postal Code (5 Digits only):" HorizontalAlignment="Right" />
+                                        <Label Grid.Row="6" Grid.Column="0" Content="Sold/Unsold:" HorizontalAlignment="Right" />
+                                        <telerik:RadComboBox Grid.Row="0" Grid.Column="1" x:Name="cboCourt" Width="300" HorizontalAlignment="Left" telerik:StyleManager.Theme="Summer"  Margin="5" DisplayMemberPath="CourtName" />
+                                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtCaseNumber" Margin="5" Width="300" HorizontalAlignment="Left" />
+                                        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtPacerImportTransactionID" Margin="5" Width="300" HorizontalAlignment="Left" />
+                                        <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtDebtorFirstName" Margin="5" Width="300" HorizontalAlignment="Left" />
+                                        <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtDebtorLastName" Margin="5" Width="300" HorizontalAlignment="Left" />
+                                        <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtPostalCode" Margin="5" Width="300" HorizontalAlignment="Left" />
+                                        <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal">
+                                            <RadioButton VerticalAlignment="Center" Margin="5" x:Name="rdoUnsoldOnly" >Unsold Only</RadioButton>
+                                            <RadioButton VerticalAlignment="Center" Margin="5" IsChecked="True"  >Show All</RadioButton>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="left">
+                                            <telerik:RadButton x:Name="btnSearchCases" Margin="3" Width="150" telerik:StyleManager.Theme="Summer" Click="btnSearchBankruptcyCases_Click">Search...</telerik:RadButton>
+                                            <telerik:RadButton x:Name="btnCloseCases" Margin="3" Width="150" telerik:StyleManager.Theme="Summer" Click="btnCloseBankruptcyCases_Click">Close Case Tabs...</telerik:RadButton>
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Grid.Row="1"  Header="Search Results (Double-Click to Edit)" Margin="5" Style="{StaticResource MyGroupBoxStyle}">
+                                <telerik:RadGridView AutoGenerateColumns="False" Margin="10" x:Name="GridViewBankruptcyCases" Width="Auto" IsReadOnly="True" ShowGroupPanel="False" telerik:StyleManager.Theme="Summer" KeyDown="GridViewBankruptcyCases_KeyDown" MouseDoubleClick="GridViewBankruptcyCases_MouseDoubleClick">
+                                    <telerik:RadGridView.Columns>
+                                        <telerik:GridViewColumn>
+                                            <telerik:GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <telerik:RadButton Content="Open"
+                                                       Click="btnOpenCase_Click" />
+                                                </DataTemplate>
+                                            </telerik:GridViewColumn.CellTemplate>
+                                        </telerik:GridViewColumn>
+                                        <telerik:GridViewDataColumn UniqueName="CourtName" Header="Court" DataMemberBinding="{Binding CourtName}" ></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn UniqueName="CaseNumber" Header="Case Number" DataMemberBinding="{Binding CaseNumber4Digit}" ></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn UniqueName="DebtorName" Header="Debtor Name" DataMemberBinding="{Binding FullName}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn UniqueName="DischargeDate" Header="Discharge Date" DataMemberBinding="{Binding DischargeDate}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn UniqueName="AddrLine1" Header="Address Line 1" DataMemberBinding="{Binding AddrLine1}" ></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn UniqueName="City" Header="City" DataMemberBinding="{Binding City}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn UniqueName="StateCode" Header="State" DataMemberBinding="{Binding StateCode}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn UniqueName="PostalCode" Header="Postal Code" DataMemberBinding="{Binding PostalCodeString}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn UniqueName="Latitude" Header="Latitude" DataMemberBinding="{Binding Latitude}"></telerik:GridViewDataColumn>
+                                        <telerik:GridViewDataColumn UniqueName="Longitude" Header="Longitude" DataMemberBinding="{Binding Longitude}"></telerik:GridViewDataColumn>
+                                    </telerik:RadGridView.Columns>
+                                </telerik:RadGridView>
+                            </GroupBox>
+                        </Grid>
+                    </telerik:RadTabItem>
+                    <telerik:RadTabItem Header="Mark Cases as Do Not Send" x:Name="rtCaseMgmtRemove" Margin="0,0,5,0"   >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Import 'Remove / Do Not contact' File:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource MyGroupBoxStyle}" Margin="10"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" >File:</Label>
+                                    <TextBox  x:Name="txtFilePath" Grid.Row="0" Grid.Column="1" Margin="5" Width="400" IsReadOnly="True" HorizontalAlignment="Left" />
+                                    <telerik:RadButton x:Name="btnSelectFile" Grid.Row="0" Grid.Column="2" Margin="5" Width="150" Click="btnSelectFile_Click">Select File...</telerik:RadButton>
+                                    <telerik:RadButton x:Name="btnProcess" Grid.Row="0" Grid.Column="3" Margin="5" Width="150" Click="btnProcess_Click" >Process...</telerik:RadButton>
+                                    <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" >Results:</Label>
+                                    <TextBox  x:Name="txtResults" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" IsReadOnly="true" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto"  HorizontalAlignment="Left" Width="800" Height="30"  />
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Download New Remove Messages or Show All Existing (Previously Processed) Messages:"  Grid.Row="1" Grid.Column="0" Style="{StaticResource MyGroupBoxStyle}" Margin="10"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+                                <Grid Margin="5" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <telerik:RadButton x:Name="btnDownloadAndProcess" Margin="3" Grid.Column="0" Width="150" telerik:StyleManager.Theme="Summer" Click="btnDownloadAndProcess_Click">Download and Process...</telerik:RadButton>
+                                        <telerik:RadButton x:Name="btnShowAll" Margin="3" Width="150" Grid.Column="1" telerik:StyleManager.Theme="Summer" Click="btnShowAll_Click">Show All</telerik:RadButton>
+                                        <Grid Grid.Column="2">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton x:Name="rdoMTD" Grid.Column="0" GroupName="Remove" IsChecked="True" Padding="5">MTD</RadioButton>
+                                            <RadioButton x:Name="rdoYTD" Grid.Column="1" GroupName="Remove" Padding="5">YTD</RadioButton>
+                                            <RadioButton x:Name="rdoAll" Grid.Column="2" GroupName="Remove"  Padding="5">All</RadioButton>
+                                        </Grid>
+                                    </Grid>
+                                    <telerik:RadGridView AutoGenerateColumns="False" Margin="10" x:Name="grdViewRemoveEmails" Grid.Row="1" Width="Auto" Height="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" ShowGroupPanel="False" telerik:StyleManager.Theme="Summer" >
+                                        <telerik:RadGridView.Columns>
+                                            <telerik:GridViewDataColumn UniqueName="MsgDateTime" Header="Recieved Date" DataMemberBinding="{Binding MsgDateTime}" ></telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn UniqueName="FromAddress" Header="From" DataMemberBinding="{Binding FromAddress}" ></telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn UniqueName="ToAddress" Header="To" DataMemberBinding="{Binding ToAddress}" ></telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn UniqueName="Subject" Header="Subject" DataMemberBinding="{Binding Subject}" ></telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn UniqueName="Body" Header="Body" DataMemberBinding="{Binding Body}" ></telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn UniqueName="Processed" Header="Processed" DataMemberBinding="{Binding Processed}" ></telerik:GridViewDataColumn>
+                                            <telerik:GridViewDataColumn UniqueName="FoundAndRemoved" Header="Found And Removed" DataMemberBinding="{Binding FoundAndRemoved}" ></telerik:GridViewDataColumn>
+                                        </telerik:RadGridView.Columns>
+                                    </telerik:RadGridView>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </telerik:RadTabItem>
+                    <telerik:RadTabItem Header="NCOA Address Verification" x:Name="rtCaseMgmtNCOA" Margin="0,0,5,0"   >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="200"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Export:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource MyGroupBoxStyle}" Margin="10"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <GroupBox Grid.Row="0"  Header="Case Filter Criteria" Margin="10" Style="{StaticResource MyGroupBoxStyle}">
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                            <Grid Name="grdCaseFilterCriteria">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Row="0" Grid.Column="0" Content="State:" HorizontalAlignment="Right" />
+                                                <Label Grid.Row="1" Grid.Column="0" Content="Court:" HorizontalAlignment="Right" />
+                                                <Label Grid.Row="2" Grid.Column="0" Content="Dealer:" HorizontalAlignment="Right" />
+                                                <Label Grid.Row="3" Grid.Column="0" Content="Start Date:" HorizontalAlignment="Right" />
+                                                <Label Grid.Row="4" Grid.Column="0" Content="End Date:" HorizontalAlignment="Right" />
+                                                <telerik:RadComboBox Grid.Row="0" Grid.Column="1" x:Name="cboState" Width="300" telerik:StyleManager.Theme="Summer" HorizontalAlignment="left" Margin="5" DisplayMemberPath="StateDescription"></telerik:RadComboBox>
+                                                <telerik:RadComboBox Grid.Row="1" Grid.Column="1" x:Name="cboCourtExportCriteria" Width="300" HorizontalAlignment="Left" telerik:StyleManager.Theme="Summer"  Margin="5" DisplayMemberPath="CourtName" />
+                                                <telerik:RadComboBox Grid.Row="2" Grid.Column="1" x:Name="cboDealerExportCriteria" Width="300" HorizontalAlignment="Left" telerik:StyleManager.Theme="Summer"  Margin="5" DisplayMemberPath="CompanyName" />
+                                                <telerik:RadDatePicker Grid.Row="3" Grid.Column="1" x:Name="rdpStartDateExportCriteria" telerik:StyleManager.Theme="Summer" HorizontalAlignment="left"></telerik:RadDatePicker>
+                                                <telerik:RadDatePicker Grid.Row="4" Grid.Column="1" x:Name="rdpEndDateExportCriteria" telerik:StyleManager.Theme="Summer" HorizontalAlignment="left"></telerik:RadDatePicker>
+
+                                            </Grid>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" >File:</Label>
+                                        <TextBox x:Name="txtFilePathExport" Grid.Row="0" Grid.Column="1" Margin="5" Width="400" IsReadOnly="True" HorizontalAlignment="Left" />
+                                        <telerik:RadButton x:Name="btnSelectFileExportPath" Grid.Row="0" Grid.Column="2" Margin="5" Width="200" Click="btnSelectFileExportPath_Click">Select Export File Path...</telerik:RadButton>
+                                        <telerik:RadButton x:Name="btnExport" Grid.Row="0" Grid.Column="3" Margin="5" Width="150" Click="btnExport_Click" >Export...</telerik:RadButton>
+                                        <telerik:RadButton x:Name="btnClearSelections" Grid.Row="0" Grid.Column="4" Margin="5" Width="150" Click="btnClearSelections_Click">Clear Selections...</telerik:RadButton>
+                                    </Grid>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Import:" Grid.Row="1" Grid.Column="0" Style="{StaticResource MyGroupBoxStyle}" Margin="10"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" >File:</Label>
+                                    <TextBox  x:Name="txtFilePathImport" Grid.Row="0" Grid.Column="1" Margin="5" Width="400" IsReadOnly="True" HorizontalAlignment="Left" />
+                                    <telerik:RadButton x:Name="btnSelectImportFile" Grid.Row="0" Grid.Column="2" Margin="5" Width="200" Click="btnSelectImportFile_Click">Select NCOA Import File...</telerik:RadButton>
+                                    <telerik:RadButton x:Name="btnImport" Grid.Row="0" Grid.Column="3" Margin="5" Width="150" Click="btnImport_Click" >Import...</telerik:RadButton>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </telerik:RadTabItem>
+                </telerik:RadTabControl>
+            </telerik:RadTabItem>            
+        </telerik:RadTabControl>
+    </Grid>
+</Window>

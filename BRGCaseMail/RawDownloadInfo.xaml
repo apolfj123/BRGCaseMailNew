@@ -1,0 +1,44 @@
+﻿<Window x:Class="BRGCaseMail.MainWindow"
+				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+				WindowState="Maximized" ResizeMode="CanResizeWithGrip" Title="BRG Case Mail Management" >
+        <Window.Resources>
+            <ResourceDictionary Source="BRGCaseMailStyleDictionary.xaml" />
+        </Window.Resources>
+
+        <Grid>
+            <Grid.Background>
+            <SolidColorBrush Color="WhiteSmoke"></SolidColorBrush>
+            </Grid.Background>
+        <GroupBox  Header="Case Data Management" Style="{StaticResource MyGroupBoxStyle}" Margin="10"  >
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+                <GroupBox Grid.Row="0"  Header="Choose Court" Margin="10" Style="{StaticResource MyGroupBoxStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <telerik:RadComboBox x:Name="cboCourt" Width="300" HorizontalAlignment="Left" telerik:StyleManager.Theme="Summer"  Margin="5" DisplayMemberPath="CourtName" SelectionChanged="cboCourt_SelectionChanged" />
+                        <telerik:RadButton x:Name="btnDownLoad" telerik:StyleManager.Theme="Summer" Click="btnDownLoad_Click">Download New Data</telerik:RadButton>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Grid.Row="1"  Header="Data Downloads/Import Transactions" Margin="5" Style="{StaticResource MyGroupBoxStyle}">
+                    <telerik:RadGridView Margin="10" x:Name="GridViewImportTransactions" Width="Auto" IsReadOnly="True" ShowGroupPanel="False" telerik:StyleManager.Theme="Summer"  AutoGenerateColumns="False" MouseDoubleClick="GridViewImportTransactions_MouseDoubleClick">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn UniqueName="DownloadTimeStamp" Header="Download Timestamp" DataMemberBinding="{Binding DownloadTimeStamp}" ></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="BillablePages" Header="Billable Pages" DataMemberBinding="{Binding BillablePages}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="Cost" Header="Cost" DataMemberBinding="{Binding Cost}" DataFormatString="{} {0:c}" ></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="StartDate" Header="Start Date" DataMemberBinding="{Binding StartDate}" DataFormatString="{} {0:MM/dd/yyyy}" ></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="EndDate" Header="End Date" DataMemberBinding="{Binding EndDate}" DataFormatString="{} {0:MM/dd/yyyy}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="FilePath" Header="File Path" DataMemberBinding="{Binding FilePath}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="DischargedCases" Header="Discharged/Filed?" DataMemberBinding="{Binding DischargedCasesYesNo}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="LineCount" Header="Line Count" DataMemberBinding="{Binding LineCount}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="TotalUniqueCases" Header="Total Unique Cases" DataMemberBinding="{Binding TotalCases}"></telerik:GridViewDataColumn>
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                </GroupBox>
+            </Grid>
+    </GroupBox>
+    </Grid>
+</Window>

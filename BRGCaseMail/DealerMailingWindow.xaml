@@ -1,0 +1,170 @@
+﻿<Window x:Class="BRGCaseMail.DealerMailingWindow"
+        xmlns:local="clr-namespace:BRGCaseMail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+				Height="730" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" Title="BRG Case Mail Management" >
+        <Window.Resources>
+            <ResourceDictionary Source="BRGCaseMailStyleDictionary.xaml" />
+        </Window.Resources>
+    <Grid>
+        <Grid.Resources>
+            <local:DealerMailingListStyleSelector x:Key="styleSelector">
+                <local:DealerMailingListStyleSelector.HighlightedStyle>
+                    <Style TargetType="telerik:GridViewRow">
+                        <Setter Property="Background" Value="LightGoldenRodYellow"></Setter>
+                    </Style>
+                </local:DealerMailingListStyleSelector.HighlightedStyle>
+                <local:DealerMailingListStyleSelector.RegularStyle>
+                    <Style TargetType="telerik:GridViewRow">
+                    </Style>
+                </local:DealerMailingListStyleSelector.RegularStyle>
+            </local:DealerMailingListStyleSelector>
+        </Grid.Resources>
+        <Grid.Background>
+            <SolidColorBrush Color="#FCFDFF"></SolidColorBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0" x:Name="gbGenerateMailing"  Header="Generate New Mailing" Style="{StaticResource MyGroupBoxStyle}" Margin="10" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" HorizontalAlignment="Right">Discharge Status:</Label>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                    <RadioButton x:Name="rdoFiledOnly" VerticalAlignment="Center" Margin="5,0,5,0" GroupName="FiledStatus" Checked="rdoFiledOnly_Checked">Filed Only</RadioButton>
+                    <RadioButton IsChecked="True" VerticalAlignment="Center" Margin="5,0,5,0" x:Name="rdoDischarged" GroupName="FiledStatus" Checked="rdoDischarged_Checked">Discharged</RadioButton>
+                </StackPanel>
+                <Label Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" HorizontalAlignment="Right">Start Select Date:</Label>
+                <telerik:RadDatePicker Grid.Row="1" Grid.Column="1" Margin="3" x:Name="rdpStartSelectDate"  />
+                <Label Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" HorizontalAlignment="Right">End Select Date:</Label>
+                <telerik:RadDatePicker Grid.Row="2" Grid.Column="1" Margin="3" x:Name="rdpEndSelectDate"  />
+                <GroupBox Header="Total Cases for Selected Dealer Zip Codes and Date Filter:" Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="0" Style="{StaticResource MyGroupBoxStyle}" Margin="10"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+                    <StackPanel HorizontalAlignment="left" Orientation="Horizontal" >
+                        <Label  HorizontalAlignment="Right" >Total Cases Available:</Label>
+                        <TextBox  Margin="5" x:Name="txtTotalMailingCases" Width="50" IsReadOnly="True" HorizontalAlignment="Left" />
+                        <Label  HorizontalAlignment="Right" >Total Unsold:</Label>
+                        <TextBox  Margin="5" x:Name="txtTotalUnsoldCases" IsReadOnly="True" Width="50" HorizontalAlignment="Left" />
+                        <telerik:RadButton x:Name="btnRefresh" Grid.Row="0" Grid.Column="2" Margin="5"  Width="150" Click="btnRefresh_Click">Refresh Totals</telerik:RadButton>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Select Print Template and Number of Mailings:" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="0" Style="{StaticResource MyGroupBoxStyle}" Margin="10,0,10,10"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" >Template:</Label>
+                        <TextBox  x:Name="txtFilePath" Grid.Row="0" Grid.Column="1" Margin="5" Width="400" IsReadOnly="True" HorizontalAlignment="Left" />
+                        <telerik:RadButton x:Name="btnSelectTemplate" Grid.Row="0" Grid.Column="2" Margin="5" Width="150" Click="btnSelectTemplate_Click">Select Template...</telerik:RadButton>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <Label  HorizontalAlignment="Right" >Number of Mailings:</Label>
+                            <TextBox Margin="5" x:Name="txtNumberMailings"  Width="50" HorizontalAlignment="Left" />
+                        <CheckBox x:Name="chkMarkAsSold" Margin="10"  IsChecked="true" VerticalAlignment="center">Mark Cases as sold</CheckBox>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Choose Process:" Grid.ColumnSpan="2" Grid.Row="5" Grid.Column="0" Style="{StaticResource MyGroupBoxStyle}" Margin="10,0,10,10"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+                <StackPanel HorizontalAlignment="left" Grid.Column="0" Orientation="Horizontal" >
+                    <GroupBox Header="1 Step Process:" Style="{StaticResource MyGroupBoxStyle}" Margin="10,10,10,10"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+                        <StackPanel HorizontalAlignment="left" Orientation="Horizontal" >
+                            <telerik:RadButton x:Name="btn1StepProcess"  Width="150" Margin="5" Click="btn1StepProcess_Click">Open Mail Merge</telerik:RadButton>
+                        </StackPanel>
+                    </GroupBox>
+                    <Label VerticalAlignment="Center">OR</Label>
+                    <GroupBox Header="2 Step Process:" Grid.Column="0" Style="{StaticResource MyGroupBoxStyle}" Margin="10,10,10,10"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+                        <StackPanel HorizontalAlignment="left" Orientation="Horizontal" >
+                            <Label VerticalAlignment="Center">Step 1:</Label>
+                            <telerik:RadButton x:Name="btn2StepProcessCreateCSV" Width="150"  Margin="5" Click="btn2StepProcessCreateCSV_Click" Content="Create CSV File"></telerik:RadButton>
+                            <Label VerticalAlignment="Center">Step 2:</Label>
+                            <telerik:RadButton x:Name="btn2StepProcessOpenMailMerge" Width="150" Margin="5" Click="btn2StepProcessOpenMailMerge_Click">Open Mail Merge</telerik:RadButton>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Row="1" Grid.Column="0" x:Name="gbReprintMailing"  Header="Print / Reprint / Re-merge Mailing: " Style="{StaticResource MyGroupBoxStyle}" Margin="10,0,10,0" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                    <Label HorizontalAlignment="Right" Margin="5" >Select Template if Different:</Label>
+                    <TextBox  x:Name="txtReprintTemplateFilePath" Margin="5" Width="400" IsReadOnly="True" HorizontalAlignment="Left" />
+                    <telerik:RadButton x:Name="btnSelectReprintTemplate" Margin="5" Width="150" Click="btnSelectReprintTemplate_Click">Select Template...</telerik:RadButton>
+                </StackPanel>
+                <GroupBox Grid.Row="1" Grid.Column="0" x:Name="gbSelectReprintTemplate" ScrollViewer.HorizontalScrollBarVisibility="Auto"  Header="Select Mailing" Style="{StaticResource MyGroupBoxStyle}" Margin="5,0,5,0" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"  >
+                    <telerik:RadGridView AutoGenerateColumns="False" Height="125"   ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="auto" Margin="10" x:Name="GridViewMailings" Width="Auto" ShowGroupPanel="False" telerik:StyleManager.Theme="Summer" RowStyleSelector="{StaticResource styleSelector}" >
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewColumn>
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadButton Content="Open Word Doc" Click="btnOpenWordDoc_Click" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewColumn>
+                            <telerik:GridViewColumn>
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadButton Content="Open CSV File" Click="btnOpenCsvFile_Click" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewColumn>
+                            <telerik:GridViewColumn>
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadButton Content="Re-Merge" Click="btnRemerge_Click" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewColumn>
+                            <telerik:GridViewColumn>
+                                <telerik:GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadButton Content="Delete Mailing"
+                                                       Click="btnDeleteMailing_Click" />
+                                    </DataTemplate>
+                                </telerik:GridViewColumn.CellTemplate>
+                            </telerik:GridViewColumn>
+                            <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="CreationDate" Header="Date Created" DataMemberBinding="{Binding CreationDate}" DataFormatString="MM/dd/yyyy hh:mm tt" ></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="NumberCases" Header="# Cases" DataMemberBinding="{Binding NumberCases}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="StartFilterDate" Header="Start Date" DataMemberBinding="{Binding StartFilterDateString}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="EndFilterDate" Header="End Date" DataMemberBinding="{Binding EndFilterDateString}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewCheckBoxColumn UniqueName="FiledCasesOnly" Header="Filed Only" DataMemberBinding="{Binding FiledCasesOnly}"></telerik:GridViewCheckBoxColumn>
+                                <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="Template" Header="Template" DataMemberBinding="{Binding TemplateFileName}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn  IsReadOnly="true" UniqueName="csv" Header="CSV" DataMemberBinding="{Binding CsvFilePath}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn IsReadOnly="true" UniqueName="MailMergeFilePath" Header="Word Document" DataMemberBinding="{Binding MailMergeFilePath}"></telerik:GridViewDataColumn>
+                            </telerik:RadGridView.Columns>
+                        </telerik:RadGridView>
+                    </GroupBox>
+                </Grid>
+            </GroupBox>
+        <telerik:RadButton x:Name="btnClose" Grid.Row="2" Grid.Column="0" Margin="0,5,10,0" Width="150" HorizontalAlignment="Right" Click="btnClose_Click_1">Close</telerik:RadButton>
+    </Grid>
+</Window>

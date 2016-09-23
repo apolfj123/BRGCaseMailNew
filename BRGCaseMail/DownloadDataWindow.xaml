@@ -1,0 +1,54 @@
+﻿<Window x:Class="BRGCaseMail.DownloadDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        Title="Download Data " Height="300" Width="400" WindowStartupLocation="CenterScreen" >
+    <Grid Margin="3,3,10,3" ShowGridLines="false">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Row="0" Header="Download Data For:" Grid.ColumnSpan="2" Margin="3" x:Name="gbCourt" VerticalAlignment="Center" >
+            <telerik:RadBusyIndicator x:Name="radBusyIndicator">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" HorizontalAlignment="Right">WebsiteURL:</Label>
+                <Label Grid.Row="1" Grid.Column="1" Margin="3" VerticalAlignment="Center" x:Name="lblWebsite"></Label>
+                <Label Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" HorizontalAlignment="Right">File Prefix:</Label>
+                <Label Grid.Row="2" Grid.Column="1" Margin="3" VerticalAlignment="Center" x:Name="lblFilePrefix"></Label>
+            </Grid>
+           </telerik:RadBusyIndicator>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" Margin="3" Grid.Row="1" Grid.Column="2" HorizontalAlignment="left">
+            <RadioButton x:Name="rdoDischarged" telerik:StyleManager.Theme="Summer" Margin="3" GroupName="DishargedType" IsChecked="True">Discharged</RadioButton>
+            <RadioButton x:Name="rdoFiled" telerik:StyleManager.Theme="Summer" Margin="3" GroupName="DishargedType">Filed</RadioButton>
+        </StackPanel>
+        <Label Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" HorizontalAlignment="Right">Start Date:</Label>
+        <telerik:RadDatePicker x:Name="rdpStartDate" Grid.Row="2" Grid.Column="1" Margin="3" />
+        <Label Grid.Row="3" Grid.Column="0" Margin="3" VerticalAlignment="Center" HorizontalAlignment="Right">End Date:</Label>
+        <telerik:RadDatePicker x:Name="rdpEndDate" Grid.Row="3" Grid.Column="1" Margin="3" />
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="3, 10, 3, 3" Orientation="Horizontal">
+            <telerik:RadButton x:Name="btnDownLoad" Margin="3" telerik:StyleManager.Theme="Summer" Click="btnDownLoad_Click">Download Data</telerik:RadButton>
+            <telerik:RadButton x:Name="btnCancel" Margin="3" telerik:StyleManager.Theme="Summer" Click="btnCancel_Click">Cancel</telerik:RadButton>
+        </StackPanel>
+
+    </Grid>
+         
+</Window>

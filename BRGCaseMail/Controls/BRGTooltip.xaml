@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="BRGCaseMail.Controls.BRGTooltip"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="Transparent" Height="30" Width="auto" IsHitTestVisible="False">
+    <Grid>
+        <Rectangle Stroke="LightGray"  Fill="WhiteSmoke"></Rectangle>
+        <Label Name="lbl" HorizontalAlignment="Left" Width="Auto" FontSize="12" Foreground="Navy" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Height="25" VerticalAlignment="Top" Content=""></Label>
+    </Grid>
+</UserControl>

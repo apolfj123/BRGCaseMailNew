@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="BRGCaseMail.BankruptcyCaseDetailUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:src="clr-namespace:BRGCaseMail"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary Source="BRGCaseMailStyleDictionary.xaml" />
+    </UserControl.Resources>
+    <Grid x:Name="GridMain">
+        <Grid.Background>
+            <SolidColorBrush Color="#FCFDFF"></SolidColorBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Case Detail" Style="{StaticResource MyGroupBoxStyle}" Margin="10"  >
+            <ScrollViewer VerticalScrollBarVisibility="auto">
+            <Grid Name="grdCaseDetails">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="1" Grid.Column="0" Content="CourtID:" HorizontalAlignment="Right" />
+                <Label Grid.Row="2" Grid.Column="0" Content="CaseNumber:" HorizontalAlignment="Right" />
+                <Label Grid.Row="3" Grid.Column="0" Content="PacerImportTransactionID:" HorizontalAlignment="Right" />
+                <Label Grid.Row="4" Grid.Column="0" Content="Chapter:" HorizontalAlignment="Right" />
+                <Label Grid.Row="5" Grid.Column="0" Content="FiledOnly:" HorizontalAlignment="Right" />
+                <Label Grid.Row="6" Grid.Column="0" Content="FiledDate:" HorizontalAlignment="Right" />
+                <Label Grid.Row="7" Grid.Column="0" Content="DischargeDate:" HorizontalAlignment="Right" />
+                <Label Grid.Row="8" Grid.Column="0" Content="Trustee:" HorizontalAlignment="Right" />
+                <Label Grid.Row="9" Grid.Column="0" Content="Judge:" HorizontalAlignment="Right" />
+                <Label Grid.Row="10" Grid.Column="0" Content="County:" HorizontalAlignment="Right" />
+                <Label Grid.Row="11" Grid.Column="0" Content="Office:" HorizontalAlignment="Right" />
+                <Label Grid.Row="12" Grid.Column="0" Content="Fee:" HorizontalAlignment="Right" />
+                <Label Grid.Row="13" Grid.Column="0" Content="Asset:" HorizontalAlignment="Right" />
+                <Label Grid.Row="14" Grid.Column="0" Content="FirstName:" HorizontalAlignment="Right" />
+                <Label Grid.Row="15" Grid.Column="0" Content="MiddleName:" HorizontalAlignment="Right" />
+                <Label Grid.Row="16" Grid.Column="0" Content="LastName:" HorizontalAlignment="Right" />
+                <Label Grid.Row="17" Grid.Column="0" Content="Suffix:" HorizontalAlignment="Right" />
+                <Label Grid.Row="18" Grid.Column="0" Content="AddrLine1:" HorizontalAlignment="Right" />
+                <Label Grid.Row="19" Grid.Column="0" Content="AddrLine2:" HorizontalAlignment="Right" />
+                <Label Grid.Row="20" Grid.Column="0" Content="AddrLine3:" HorizontalAlignment="Right" />
+                <Label Grid.Row="21" Grid.Column="0" Content="City:" HorizontalAlignment="Right" />
+                <Label Grid.Row="22" Grid.Column="0" Content="StateCode:" HorizontalAlignment="Right" />
+                <Label Grid.Row="23" Grid.Column="0" Content="PostalCode:" HorizontalAlignment="Right" />
+                <Label Grid.Row="24" Grid.Column="0" Content="PostalLast4:" HorizontalAlignment="Right" />
+                <Label Grid.Row="25" Grid.Column="0" Content="Latitude:" HorizontalAlignment="Right" />
+                <Label Grid.Row="26" Grid.Column="0" Content="Longitude:" HorizontalAlignment="Right" />
+                <Label Grid.Row="27" Grid.Column="0" Content="Country:" HorizontalAlignment="Right" />
+                <Label Grid.Row="28" Grid.Column="0" Content="Phone:" HorizontalAlignment="Right" />
+                <Label Grid.Row="29" Grid.Column="0" Content="ssnLast4:" HorizontalAlignment="Right" />
+                <Label Grid.Row="30" Grid.Column="0" Content="CareOf:" HorizontalAlignment="Right" />
+                <Label Grid.Row="31" Grid.Column="0" Content="DontSend:" HorizontalAlignment="Right" />
+                <Label Grid.Row="32" Grid.Column="0" Content="Returned:" HorizontalAlignment="Right" />
+                <Label Grid.Row="33" Grid.Column="0" Content="SoldCount:" HorizontalAlignment="Right" />
+                <Label Grid.Row="34" Grid.Column="0" Content="LastSoldDate:" HorizontalAlignment="Right" />
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="3" x:Name="txtCourtID" Text="{Binding Path=CourtID}" />
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="3" x:Name="txtCaseNumber" Text="{Binding Path=CaseNumber}" />
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="3" x:Name="txtPacerImportTransactionID" Text="{Binding Path=PacerImportTransactionID}" />
+                <TextBox Grid.Row="4" Grid.Column="1" Margin="3" x:Name="txtChapter" Text="{Binding Path=Chapter}" />
+                <CheckBox Grid.Row="5" Grid.Column="1" Margin="3" x:Name="chkFiledOnly" IsChecked="{Binding Path=FiledOnly}" />
+                <telerik:RadDatePicker Grid.Row="6" Grid.Column="1" Margin="3" x:Name="rdpFiledDate" SelectedDate="{Binding Path=FiledDate}" />
+                <telerik:RadDatePicker Grid.Row="7" Grid.Column="1" Margin="3" x:Name="rdpDischargeDate" SelectedDate="{Binding Path=DischargeDate}" />
+                <TextBox Grid.Row="8" Grid.Column="1" Margin="3" x:Name="txtTrustee" Text="{Binding Path=Trustee}" />
+                <TextBox Grid.Row="9" Grid.Column="1" Margin="3" x:Name="txtJudge" Text="{Binding Path=Judge}" />
+                <TextBox Grid.Row="10" Grid.Column="1" Margin="3" x:Name="txtCounty" Text="{Binding Path=County}" />
+                <TextBox Grid.Row="11" Grid.Column="1" Margin="3" x:Name="txtOffice" Text="{Binding Path=Office}" />
+                <TextBox Grid.Row="12" Grid.Column="1" Margin="3" x:Name="txtFee" Text="{Binding Path=Fee}" />
+                <TextBox Grid.Row="13" Grid.Column="1" Margin="3" x:Name="txtAsset" Text="{Binding Path=Asset}" />
+                <TextBox Grid.Row="14" Grid.Column="1" Margin="3" x:Name="txtFirstName" Text="{Binding Path=FirstName}" />
+                <TextBox Grid.Row="15" Grid.Column="1" Margin="3" x:Name="txtMiddleName" Text="{Binding Path=MiddleName}" />
+                <TextBox Grid.Row="16" Grid.Column="1" Margin="3" x:Name="txtLastName" Text="{Binding Path=LastName}" />
+                <TextBox Grid.Row="17" Grid.Column="1" Margin="3" x:Name="txtSuffix" Text="{Binding Path=Suffix}" />
+                <TextBox Grid.Row="18" Grid.Column="1" Margin="3" x:Name="txtAddrLine1" Text="{Binding Path=AddrLine1}" />
+                <TextBox Grid.Row="19" Grid.Column="1" Margin="3" x:Name="txtAddrLine2" Text="{Binding Path=AddrLine2}" />
+                <TextBox Grid.Row="20" Grid.Column="1" Margin="3" x:Name="txtAddrLine3" Text="{Binding Path=AddrLine3}" />
+                <TextBox Grid.Row="21" Grid.Column="1" Margin="3" x:Name="txtCity" Text="{Binding Path=City}" />
+                <TextBox Grid.Row="22" Grid.Column="1" Margin="3" x:Name="txtStateCode" Text="{Binding Path=StateCode}" />
+                <TextBox Grid.Row="23" Grid.Column="1" Margin="3" x:Name="txtPostalCode" Text="{Binding Path=PostalCodeString}" />
+                <TextBox Grid.Row="24" Grid.Column="1" Margin="3" x:Name="txtPostalLast4" Text="{Binding Path=PostalLast4}" />
+                <TextBox Grid.Row="25" Grid.Column="1" Margin="3" x:Name="txtLatitude" Text="{Binding Path=Latitude}" />
+                <TextBox Grid.Row="26" Grid.Column="1" Margin="3" x:Name="txtLongitude" Text="{Binding Path=Longitude}" />
+                <TextBox Grid.Row="27" Grid.Column="1" Margin="3" x:Name="txtCountry" Text="{Binding Path=Country}" />
+                <TextBox Grid.Row="28" Grid.Column="1" Margin="3" x:Name="txtPhone" Text="{Binding Path=Phone}" />
+                <TextBox Grid.Row="29" Grid.Column="1" Margin="3" x:Name="txtssnLast4" Text="{Binding Path=ssnLast4}" />
+                <TextBox Grid.Row="30" Grid.Column="1" Margin="3" x:Name="txtCareOf" Text="{Binding Path=CareOf}" />
+                <CheckBox Grid.Row="31" Grid.Column="1" Margin="3" x:Name="chkDontSend"  IsChecked="{Binding Path=DontSend}" />
+                <CheckBox Grid.Row="32" Grid.Column="1" Margin="3" x:Name="chkReturned" IsChecked="{Binding Path=Returned}" />
+                <TextBox Grid.Row="33" Grid.Column="1" Margin="3" x:Name="txtSoldCount" Text="{Binding Path=SoldCount}" />
+                <telerik:RadDatePicker Grid.Row="34" Grid.Column="1" Margin="3" x:Name="rdpLastSoldDate" SelectedDate="{Binding Path=LastSoldDate}" />
+                <StackPanel Grid.Column="1" Grid.Row="35" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <telerik:RadButton x:Name="btnSave" Margin="3" Click="btnSave_Click">Save and Close</telerik:RadButton>
+                    <telerik:RadButton x:Name="btnClose" Margin="3" Click="btnClose_Click">Close</telerik:RadButton>
+                </StackPanel>
+            </Grid>
+            </ScrollViewer>
+        </GroupBox>
+    </Grid>
+</UserControl>

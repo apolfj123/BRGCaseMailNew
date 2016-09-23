@@ -1,0 +1,20 @@
+﻿<Window x:Class="BRGCaseMail.ImportZipCodeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        Title="Upload Zip Code File" Height="100" Width="850" WindowStartupLocation="CenterScreen" >
+    <Grid Margin="3,3,10,3" ShowGridLines="false">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Right" Margin="3, 10, 3, 3" Orientation="Horizontal">
+            <Label Content="ZipCodeFile:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" />
+            <TextBox  x:Name="txtFilePath" Grid.Row="0" Grid.Column="1" Margin="5" Width="400" IsReadOnly="True" HorizontalAlignment="Left" />
+            <telerik:RadButton x:Name="btnSelectZipCodeFile" Grid.Row="0" Grid.Column="2" Margin="5" telerik:StyleManager.Theme="Windows7" Width="150" Click="btnSelectZipCodeFile_Click">Select Zip Code CSV...</telerik:RadButton>
+            <telerik:RadButton x:Name="btnImport" Margin="5" telerik:StyleManager.Theme="Windows7" Click="btnImport_Click">Upload ZipCodes</telerik:RadButton>
+            <telerik:RadButton x:Name="btnCancel" Margin="5" telerik:StyleManager.Theme="Windows7" Click="btnCancel_Click">Cancel</telerik:RadButton>
+        </StackPanel>
+    </Grid>
+         
+</Window>

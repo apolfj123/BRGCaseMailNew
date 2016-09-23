@@ -1,0 +1,120 @@
+﻿<Window x:Class="BRGCaseMail.RawDataWindow"
+        xmlns:local="clr-namespace:BRGCaseMail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+				Height="600" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" Title="BRG Case Mail Management" >
+        <Window.Resources>
+            <ResourceDictionary Source="BRGCaseMailStyleDictionary.xaml" />
+        </Window.Resources>
+
+        <Grid>
+        <Grid.Resources>
+            <local:BRGStyleSelector x:Key="styleSelector">
+                <local:BRGStyleSelector.HighlightedStyle>
+                    <Style TargetType="telerik:GridViewRow">
+                        <Setter Property="Background" Value="LightGoldenRodYellow"></Setter>
+                    </Style>
+                </local:BRGStyleSelector.HighlightedStyle>
+                <local:BRGStyleSelector.RegularStyle>
+                    <Style TargetType="telerik:GridViewRow">
+                    </Style>
+                </local:BRGStyleSelector.RegularStyle>
+            </local:BRGStyleSelector>
+        </Grid.Resources>
+        <Grid.Background>
+            <SolidColorBrush Color="#FCFDFF"></SolidColorBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <GroupBox  Header="View Import Transaction:" Grid.Row="0"  Style="{StaticResource MyGroupBoxStyle}" Margin="10"  >
+                <telerik:RadTabControl telerik:StyleManager.Theme="Summer" Margin="10">
+                    <telerik:RadTabItem Header="Import Info">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="200" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Court:" HorizontalAlignment="Right" />
+                            <Label Grid.Row="1" Grid.Column="0" Content="Billable Pages:" HorizontalAlignment="Right" />
+                            <Label Grid.Row="2" Grid.Column="0" Content="Cost:" HorizontalAlignment="Right" />
+                            <Label Grid.Row="3" Grid.Column="0" Content="Download Timestamp:" HorizontalAlignment="Right" />
+                            <Label Grid.Row="4" Grid.Column="0" Content="Start Date:" HorizontalAlignment="Right" />
+                            <Label Grid.Row="5" Grid.Column="0" Content="End Date:" HorizontalAlignment="Right" />
+                            <Label Grid.Row="6" Grid.Column="0" Content="# Lines:" HorizontalAlignment="Right" />
+                            <Label Grid.Row="7" Grid.Column="0" Content="# Unique Cases:" HorizontalAlignment="Right" />
+                            <Label Grid.Row="8" Grid.Column="0" Content="Import Status:" HorizontalAlignment="Right" />
+                            <TextBox Grid.Column="1" Grid.Row="0" Margin="5" IsReadOnly="True" x:Name="txtCourtName" />
+                            <TextBox Grid.Column="1" Grid.Row="1" Margin="5" IsReadOnly="True" x:Name="txtBillablePages" />
+                            <TextBox Grid.Column="1" Grid.Row="2" Margin="5" IsReadOnly="True" x:Name="txtCost"/>
+                            <TextBox Grid.Column="1" Grid.Row="3" Margin="5" IsReadOnly="True" x:Name="txtTimestamp"/>
+                            <TextBox Grid.Column="1" Grid.Row="4" Margin="5" IsReadOnly="True" x:Name="txtStartDate"/>
+                            <TextBox Grid.Column="1" Grid.Row="5" Margin="5" IsReadOnly="True" x:Name="txtEndDate"/>
+                            <TextBox Grid.Column="1" Grid.Row="6" Margin="5" IsReadOnly="True" x:Name="txtLines"/>
+                            <TextBox Grid.Column="1" Grid.Row="7" Margin="5" IsReadOnly="True" x:Name="txtUniqueCases"/>
+                            <TextBox Grid.Column="1" Grid.Row="8" Margin="5" IsReadOnly="True" x:Name="txtImportStatus"/>
+                        </Grid>
+                    </telerik:RadTabItem>
+                    <telerik:RadTabItem Header="Raw Data" >                            
+                         <TextBox Margin="5" Height="400"  x:Name="txtRawData" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"  TextWrapping="Wrap"/>
+                    </telerik:RadTabItem>
+                    <telerik:RadTabItem Header="Lines">
+                        <StackPanel Orientation="Vertical" Margin="10">
+                        <telerik:RadGridView Height="400" Margin="10" ShowGroupPanel="false"  x:Name="GridViewLineItems" IsReadOnly="True" telerik:StyleManager.Theme="Summer"  AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" RowStyleSelector="{StaticResource styleSelector}"  >
+                            <telerik:RadGridView.Columns>
+                                <telerik:GridViewCheckBoxColumn UniqueName="Imported" Header="Imported" DataMemberBinding="{Binding Imported}" ></telerik:GridViewCheckBoxColumn>
+                                <telerik:GridViewDataColumn UniqueName="PacerImportTransactionID" Header="Transaction ID" DataMemberBinding="{Binding PacerImportTransactionID}" ></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="CaseNumber4Digit" Header="Case Number 4 Digit" DataMemberBinding="{Binding CaseNumber4Digit}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="Chapter" Header="Chapter" DataMemberBinding="{Binding Chapter}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="DischargedDate" Header="DischargedDate" DataMemberBinding="{Binding DischargedDate}" ></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="FiledDate" Header="Filed Date" DataMemberBinding="{Binding FiledDate}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="PartyFirstName" Header="Party First Name" DataMemberBinding="{Binding PartyFirstName}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="PartyLastName" Header="Party Last Name" DataMemberBinding="{Binding PartyLastName}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="PartySSNo" Header="Party SS #" DataMemberBinding="{Binding PartySSNo}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="PartyCaseRole" Header="Party Role" DataMemberBinding="{Binding PartyCaseRole}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="PartyAddressLine1" Header="Address" DataMemberBinding="{Binding PartyAddressLine1}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="PartyCity" Header="City" DataMemberBinding="{Binding PartyCity}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="PartyState" Header="State" DataMemberBinding="{Binding PartyState}"></telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn UniqueName="PartyZipCode" Header="PartyZipCode" DataMemberBinding="{Binding PartyZipCode}"></telerik:GridViewDataColumn>
+                            </telerik:RadGridView.Columns>
+                        </telerik:RadGridView>
+                        </StackPanel>
+                    </telerik:RadTabItem>
+                <telerik:RadTabItem Header="Imported Cases">
+                    <telerik:RadGridView AutoGenerateColumns="False" Margin="10" x:Name="GridViewBankruptcyCases" Width="Auto" IsReadOnly="True" ShowGroupPanel="False" telerik:StyleManager.Theme="Summer" >
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn UniqueName="CourtName" Header="Court" DataMemberBinding="{Binding CourtName}" ></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="CaseNumber" Header="Case Number" DataMemberBinding="{Binding CaseNumber4Digit}" ></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="DebtorName" Header="Debtor Name" DataMemberBinding="{Binding FullName}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="DischargeDate" Header="Discharge Date" DataMemberBinding="{Binding DischargeDateString}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="AddrLine1" Header="Address Line 1" DataMemberBinding="{Binding AddrLine1}" ></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="City" Header="City" DataMemberBinding="{Binding City}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="StateCode" Header="State" DataMemberBinding="{Binding StateCode}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="PostalCode" Header="Postal Code" DataMemberBinding="{Binding PostalCodeString}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="Latitude" Header="Latitude" DataMemberBinding="{Binding Latitude}"></telerik:GridViewDataColumn>
+                            <telerik:GridViewDataColumn UniqueName="Longitude" Header="Longitude" DataMemberBinding="{Binding Longitude}"></telerik:GridViewDataColumn>
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+
+                </telerik:RadTabItem>
+            </telerik:RadTabControl>
+        </GroupBox>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            <telerik:RadButton  Width="100" HorizontalAlignment="Right" Margin="10" telerik:StyleManager.Theme="Summer" x:Name="btnClose" Click="btnClose_Click">Close</telerik:RadButton>
+        </StackPanel>
+        </Grid>
+</Window>

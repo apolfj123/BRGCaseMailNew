@@ -1,0 +1,10 @@
+﻿<Window x:Class="BRGCaseMail.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window2" Height="300" Width="300" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:my="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.RibbonView">
+    <Grid>
+        <telerik:RadGridView HorizontalAlignment="Left" Margin="82,124,0,0" Name="radGridView1" VerticalAlignment="Top" />
+        <my:ApplicationMenu Height="100" HorizontalAlignment="Left" Margin="98,212,0,0" Name="applicationMenu1" VerticalAlignment="Top" Width="200" />
+        <telerik:RadCalendar HorizontalAlignment="Left" Margin="48,111,0,0" Name="radCalendar1" VerticalAlignment="Top" />
+    </Grid>
+</Window>
