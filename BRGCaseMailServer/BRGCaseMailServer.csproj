@@ -40,10 +40,6 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BKLeadsOnline.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\BKLeadsOnline.Domain.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\..\BRGServer\bin\Debug\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -291,6 +287,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BKLeadsOnline.Domain\BKLeadsOnline.Domain.csproj">
+      <Project>{6eb94b0c-e2c9-433c-88f0-72e3a60f83a6}</Project>
+      <Name>BKLeadsOnline.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

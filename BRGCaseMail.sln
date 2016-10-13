@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRGCaseMail", "BRGCaseMail\BRGCaseMail.csproj", "{26F8DE14-5FA0-4BFB-AF83-27B1F07D6DAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BRGCaseMailServer", "BRGCaseMailServer\BRGCaseMailServer.csproj", "{B7DFB7CF-537C-4BDC-9697-3595E4646A9F}"
@@ -11,28 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMap.NET.WindowsPresentatio
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupBRGCaseMail", "SetupBRGCaseMail\SetupBRGCaseMail.vdproj", "{CB2AC3D2-B53A-4A69-BDBA-1BA98CAA8CA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BKLeadsOnline.Domain", "BKLeadsOnline.Domain\BKLeadsOnline.Domain.csproj", "{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}"
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://patagonia:8080/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = BRGCaseMail\\BRGCaseMail.csproj
-		SccProjectName1 = BRGCaseMail
-		SccLocalPath1 = BRGCaseMail
-		SccProjectUniqueName2 = BRGCaseMailServer\\BRGCaseMailServer.csproj
-		SccProjectName2 = BRGCaseMailServer
-		SccLocalPath2 = BRGCaseMailServer
-		SccProjectUniqueName3 = GMap.NET.Core\\GMap.NET.Core.csproj
-		SccProjectName3 = GMap.NET.Core
-		SccLocalPath3 = GMap.NET.Core
-		SccProjectUniqueName4 = GMap.NET.WindowsPresentation\\GMap.NET.WindowsPresentation.csproj
-		SccProjectName4 = GMap.NET.WindowsPresentation
-		SccLocalPath4 = GMap.NET.WindowsPresentation
-		SccProjectUniqueName5 = SetupBRGCaseMail\\SetupBRGCaseMail.vdproj
-		SccProjectName5 = SetupBRGCaseMail
-		SccLocalPath5 = SetupBRGCaseMail
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -88,6 +71,16 @@ Global
 		{CB2AC3D2-B53A-4A69-BDBA-1BA98CAA8CA5}.Release|Any CPU.ActiveCfg = Release
 		{CB2AC3D2-B53A-4A69-BDBA-1BA98CAA8CA5}.Release|Mixed Platforms.ActiveCfg = Release
 		{CB2AC3D2-B53A-4A69-BDBA-1BA98CAA8CA5}.Release|x86.ActiveCfg = Release
+		{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6EB94B0C-E2C9-433C-88F0-72E3A60F83A6}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

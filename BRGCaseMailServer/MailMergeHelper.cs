@@ -64,9 +64,9 @@ namespace BRGCaseMailServer
                 + "_" 
                 + _dealerMailingList.ID.ToString() 
                 + "_" + _dealerMailingList.TemplateFileName.Replace(" ", "_").Substring(0, _dealerMailingList.TemplateFileName.Replace(" ", "_").IndexOf(".")) 
-                + ".doc");
+                + ".docx");
 
-            _dealerMailingList.MailMergeFilePath = ConfigurationManager.AppSettings.Get("MailMergeDocFilePath") + _dealer.CompanyName.Replace(" ", "_") + "_" + _dealerMailingList.StartFilterDate.Month + _dealerMailingList.StartFilterDate.Day + _dealerMailingList.StartFilterDate.Year + "_" + _dealerMailingList.EndFilterDate.Month + _dealerMailingList.EndFilterDate.Day + _dealerMailingList.EndFilterDate.Year + "_" + _dealerMailingList.ID.ToString() + "_" + _dealerMailingList.TemplateFileName.Replace(" ", "_").Substring(0, _dealerMailingList.TemplateFileName.Replace(" ", "_").IndexOf(".")) + ".doc";
+            _dealerMailingList.MailMergeFilePath = ConfigurationManager.AppSettings.Get("MailMergeDocFilePath") + _dealer.CompanyName.Replace(" ", "_") + "_" + _dealerMailingList.StartFilterDate.Month + _dealerMailingList.StartFilterDate.Day + _dealerMailingList.StartFilterDate.Year + "_" + _dealerMailingList.EndFilterDate.Month + _dealerMailingList.EndFilterDate.Day + _dealerMailingList.EndFilterDate.Year + "_" + _dealerMailingList.ID.ToString() + "_" + _dealerMailingList.TemplateFileName.Replace(" ", "_").Substring(0, _dealerMailingList.TemplateFileName.Replace(" ", "_").IndexOf(".")) + ".docx";
 
             if (SaveMailingList)
             {
